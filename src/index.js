@@ -4,7 +4,7 @@ module.exports = function check(str, bracketsConfig) {
 
 
 result = true;
-const bracketsConfig = "|()|";
+/*const bracketsConfig = "|()|";*/
 const stack = [];
 let lineCounter = 0;
 for (const bracket of bracketsConfig) 
