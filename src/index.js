@@ -1,10 +1,10 @@
-
+/*
 module.exports = function check(str, bracketsConfig) {
   // your solution
-
-
+}
+*/
 result = true;
-/*const bracketsConfig = "|()|";*/
+const bracketsConfig = "([[[[(({{{}}}(([](((((((())))||||||))))[[{{|{{}}|}}[[[[]]]]{{{{{}}}}}]]))))]]]])((([[[[(({{{}}}(([](((((((())))||||||))))[[{{|{{}}|}}[[[[]]]]{{{{{}}}}}]]))))]]]])))";
 const stack = [];
 let lineCounter = 0;
 for (const bracket of bracketsConfig) 
@@ -18,31 +18,29 @@ for (const bracket of bracketsConfig)
       let stackElement = stack.pop();
       console.log(stackElement);
       if('(' != stackElement) 
-        {console.log("false");result = false;}
+        {console.log("false4");result = false;}
     }
     else if (bracket === ']') {
       let stackElement = stack.pop();
       console.log(stackElement);
       if('[' != stackElement) 
-        {console.log("false");result = false;}
+        {console.log("false3");result = false;}
      }
      else if (bracket === '}') {
       let stackElement = stack.pop();
       console.log(stackElement);
       if('{' != stackElement) 
-        {console.log("false");result = false;}
+        {console.log("false2");result = false;}
      }
      else if (bracket === "|" && (lineCounter == 1)) {
       let stackElement = stack.pop();
       console.log(stackElement);
       if('|' != stackElement) 
-        {console.log("false");result = false};
+        {console.log("false1");result = false;};
         lineCounter = 0;
      }
      
     console.log(stack);
   }
   console.log(stack.length === 0);
-  if(stack.length === 0){result = true} else {result = false}; console.log("and total ",result);
-return result;
-}
+  if(result != false && stack.length === 0){result = true} else {result = false}; console.log("and total ",result);
