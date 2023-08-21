@@ -12,8 +12,8 @@ for (const bracket of str)
   {
     if (bracket === "1" || bracket === "3" || bracket === "5" ||  bracket === "(" || bracket === "[" || bracket === "{" || (bracket === "|" && (lineCounter === 0)) || (bracket === "7" && (lineCounter7 === 0)) || (bracket === "8" && (lineCounter8 === 0))) {
     if (bracket === "|") {lineCounter++}
-    if (bracket === "7") {lineCounter7++}
-    if (bracket === "8") {lineCounter8++}
+    if (bracket === "7") {lineCounter7++; place7stack = stack.length+1;console.log("add"+place7stack);}
+    if (bracket === "8") {lineCounter8++; place8stack = stack.length+1;console.log("add"+place8stack);}
     stack.push(bracket);
 
     }
@@ -55,11 +55,12 @@ for (const bracket of str)
      else if (bracket === "|" && (lineCounter === 1)) {
       if (stack.length === 0) {stackWasEqualZero = "Y";}
       let stackElement = stack.pop();
-      //console.log(stackElement);
       if('|' != stackElement) {result = false;} else {result = true;}
       lineCounter = 0;
      }
      else if (bracket === "7" && (lineCounter7 === 1)) {
+      console.log("remove"+stack.length);
+      if (stack.length > place7stack) {stackWasEqualZero = "Y";} 
       if (stack.length === 0) {stackWasEqualZero = "Y";}
       let stackElement = stack.pop();
       //console.log(stackElement);
@@ -67,6 +68,7 @@ for (const bracket of str)
       lineCounter7 = 0;
      }
      else if (bracket === "8" && (lineCounter8 === 1)) {
+      if (stack.length > place8stack) {stackWasEqualZero = "Y";} 
       if (stack.length === 0) {stackWasEqualZero = "Y";}
       let stackElement = stack.pop();
       //console.log(stackElement);
@@ -76,10 +78,9 @@ for (const bracket of str)
      
     
   }
- /* console.log(stack.length === 0); */
+
   if(result != false && stack.length === 0 && stackWasEqualZero == "N"){result = true} else {result = false}; 
   console.log(result);
   return result;
 }
-
 
