@@ -1,6 +1,7 @@
 
-module.exports = function check(str, bracketsConfig) {
-  
+
+result = true;
+const str = "([[[[(({{{}}}(([](((((((())))||||||))))[[{{|{{}}|}}[[[[]]]]{{{{{}}}}}]]))))]]]]))()";
 
 const stack = [];
 let lineCounter = 0;
@@ -47,7 +48,3 @@ for (const bracket of str)
  /* console.log(stack.length === 0); */
   if(result != false && stack.length === 0){result = true} else {result = false}; 
   console.log(result);
-  return result;
-}
-
-
