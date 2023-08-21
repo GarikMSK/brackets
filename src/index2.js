@@ -5,6 +5,7 @@ const str = "([[[[(({{{}}}(([](((((((())))||||||))))[[{{|{{}}|}}[[[[]]]]{{{{{}}}
 
 const stack = [];
 let lineCounter = 0;
+stackWasEqualZero = "N";
 console.log("zadacha "+str);
 for (const bracket of str) 
   {
@@ -14,6 +15,8 @@ for (const bracket of str)
     // console.log(stack+12);
     }
     else if (bracket === ')') {
+      console.log(stack.length);
+      if (stack.length === 0) {stackWasEqualZero = "Y";}
       // if (!stack.pop()) {
       //  return false;
       // }
@@ -46,5 +49,5 @@ for (const bracket of str)
     
   }
  /* console.log(stack.length === 0); */
-  if(result != false && stack.length === 0){result = true} else {result = false}; 
+  if(result != false && stack.length === 0 && stackWasEqualZero == "N"){result = true} else {result = false}; 
   console.log(result);

@@ -3,6 +3,7 @@ module.exports = function check(str, bracketsConfig) {
   
 
 const stack = [];
+stackWasEqualZero = "N";
 let lineCounter = 0;
 console.log("zadacha "+str);
 for (const bracket of str) 
@@ -10,32 +11,29 @@ for (const bracket of str)
     if (bracket === "(" || bracket === "[" || bracket === "{" || (bracket === "|" && (lineCounter === 0))) {
     if (bracket === "|") {lineCounter++}
     stack.push(bracket);
-    // console.log(stack+12);
+
     }
     else if (bracket === ')') {
-      // if (!stack.pop()) {
-      //  return false;
-      // }
+      if (stack.length === 0) {stackWasEqualZero = "Y";}
+
       let stackElement = stack.pop();
-        //console.log(stackElement);
+
         if('(' != stackElement) {result = false;} else {result = true;}
-          /*
-      let stackElement = stack.pop();
-      console.log(stackElement);
-      if('(' != stackElement) 
-        {console.log("false4");result = false;} */
     }
     else if (bracket === ']') {
+      if (stack.length === 0) {stackWasEqualZero = "Y";}
       let stackElement = stack.pop();
-      //console.log(stackElement);
+
       if('(' != stackElement) {result = false;} else {result = true;}
      }
      else if (bracket === '}') {
+      if (stack.length === 0) {stackWasEqualZero = "Y";}
       let stackElement = stack.pop();
-      //console.log(stackElement);
+
       if('}' != stackElement) {result = false;} else {result = true;}
      }
      else if (bracket === "|" && (lineCounter === 1)) {
+      if (stack.length === 0) {stackWasEqualZero = "Y";}
       let stackElement = stack.pop();
       //console.log(stackElement);
       if('|' != stackElement) {result = false;} else {result = true;}
@@ -45,7 +43,7 @@ for (const bracket of str)
     
   }
  /* console.log(stack.length === 0); */
-  if(result != false && stack.length === 0){result = true} else {result = false}; 
+  if(result != false && stack.length === 0 && stackWasEqualZero == "N"){result = true} else {result = false}; 
   console.log(result);
   return result;
 }
